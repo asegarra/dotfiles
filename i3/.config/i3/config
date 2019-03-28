@@ -21,11 +21,46 @@ set $font Iosevka
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:$font 10
+font pango:$font 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
+
+# Gaps
+for_window [class=".*"] border pixel 1
+gaps inner 5
+smart_gaps on
+smart_borders on
+
+#Colorsi
+set_from_resource $color0 i3wm.color0
+set_from_resource $color1 i3wm.color1
+set_from_resource $color2 i3wm.color2
+set_from_resource $color3 i3wm.color3
+set_from_resource $color4 i3wm.color4
+set_from_resource $color5 i3wm.color5
+set_from_resource $color6 i3wm.color6
+set_from_resource $color7 i3wm.color7
+set_from_resource $color8 i3wm.color8
+set_from_resource $color9 i3wm.color9
+set_from_resource $color10 i3wm.color10
+set_from_resource $color11 i3wm.color11
+set_from_resource $color12 i3wm.color12
+set_from_resource $color13 i3wm.color13
+set_from_resource $color14 i3wm.color14
+set_from_resource $color15 i3wm.color15
+set_from_resource $fg i3wm.foreground 
+set_from_resource $bg i3wm.background
+
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $color12  $fg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $color1
+client.placeholder      $bg     $bg     $fg  $bg       $fg
+
+client.background       $bg
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -44,11 +79,11 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-# bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec --no-startup-id dmenu_run -fn 'Iosevka:size=13' -nf '$fg' -nb '$bg' -sb '$color4' -sf '$bg'
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -i -fn $font:size=12'
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+$left focus left
@@ -171,16 +206,20 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Start polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-        font pango:$font 11
-}
+#bar {
+#        status_command i3status
+#        font pango:$font 13
+#        position top
+#}
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id lockscreen, mode "default"
+    bindsym l exec --no-startup-id "sleep 1; xset dpms force off", mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
     bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
@@ -193,15 +232,21 @@ mode "$mode_system" {
 
 bindsym $mod+Escape mode "$mode_system"
 
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
 # switch with last workspace
 bindsym $mod+Tab workspace back_and_forth
 
 # Clipboard manager
-bindsym $mod+Insert exec --no-startup-id clipmenu -i -fn $font:size=12
+bindsym $mod+Insert exec --no-startup-id clipmenu -i -fn '$font:size=13' -nf '$fg' -nb '$bg' -sb '$color4' -sf '$bg'
 
-bindsym XF86AudioMute exec --no-startup-id volume mute
-bindsym XF86AudioLowerVolume exec --no-startup-id volume down
-bindsym XF86AudioRaiseVolume exec --no-startup-id volume up
-bindsym XF86AudioMicMute exec --no-startup-id amixer -D pulse sset Capture toggle
-bindsym XF86MonBrightnessDown exec backlight down
-bindsym XF86MonBrightnessUp exec backlight up
+bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master 1+ toggle
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse set Master 5%-
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse set Master 5%+
+bindsym XF86AudioMicMute exec --no-startup-id amixer -D pulse set Capture toggle
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
