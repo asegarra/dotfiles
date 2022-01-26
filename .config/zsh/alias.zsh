@@ -25,3 +25,5 @@ alias md='mkdir -p'
 alias rd=rmdir
 
 alias help=run-help
+
+alias pu='sudo pacman -Syu'

@@ -5,8 +5,8 @@ path+=('$HOME/.local/bin')
 
 export TERMINAL="alacritty"
 export BROWSER="firefox"
-export EDITOR="emacsclient -t"           # $EDITOR opens in terminal
-export VISUAL="emacsclient -c -a emacs"  # $VISUAL opens in GUI mode
+export EDITOR="nvim"     # $EDITOR opens in terminal
+export VISUAL="nvim"     # $VISUAL opens in GUI mode
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 

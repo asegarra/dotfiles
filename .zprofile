@@ -9,5 +9,6 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty2" ]; then
   export XDG_SESSION_TYPE=wayland	
   export MOZ_ENABLE_WAYLAND=1
 
-  exec sway > /tmp/sway.log 2>&1 # debug log
+  #exec sway > /tmp/sway.log 2>&1 # debug log
+  exec sway > /dev/null 2>&1
 fi
