@@ -2,7 +2,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
+set $mod Mod1
 
 # Home row direction keys, like vim
 set $left h
@@ -280,6 +280,6 @@ bar {
   status_command i3status-rs
   tray_output primary
   font pango:$font 10
-  }
+  
 }
 
