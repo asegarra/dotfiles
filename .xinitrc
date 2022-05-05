@@ -8,9 +8,7 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 # merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
-
     xrdb -merge $sysresources
-
 fi
 
 if [ -f $sysmodmap ]; then
@@ -18,9 +16,7 @@ if [ -f $sysmodmap ]; then
 fi
 
 if [ -f "$userresources" ]; then
-
     xrdb -merge "$userresources"
-
 fi
 
 if [ -f "$usermodmap" ]; then
@@ -44,7 +40,7 @@ function run {
 }
 
 # Map caps to control
-setxkbmap -option ctrl:nocaps 
+setxkbmap -option caps:swapescape
 
 # Kill X with ctrl+alt+backspace
 setxkbmap -option terminate:ctrl_alt_bksp
@@ -59,5 +55,7 @@ xset s off # Disable screensaver
 xset dpms 600 620 640 
 
 run redshift
-
+run unclutter
+xrandr --output HDMI-1 --primary --left-of eDP-1
 exec i3 > /dev/null 2>&1
+#exec i3 > ~/.i3.log 2>&1

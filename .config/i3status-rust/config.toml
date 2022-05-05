@@ -1,44 +1,20 @@
 [theme]
 name = "native"
+
 [theme.overrides]
 
-idle_bg = "#282c34"
-idle_fg = "#abb2bf"
-info_bg = "#282c34"
-info_fg = "#56b6c2"
-good_bg = "#282c34"
-good_fg = "#98c379"
-warning_bg = "#282c34"
-warning_fg = "#e5c07b"
-critical_bg = "#282c34"
-critical_fg = "#e06c75"
+info_fg = "#86c1b9"
+good_fg = "#a1b56c"
+warning_fg = "#f7ca88"
+critical_fg = "#ab4642"
 
 [icons]
-name = "none"
-[icons.overrides]
-music = "\uf886"
-music_next = "\uf061"
-music_pause = "\uf04c"
-music_play = "\uf04b"
-music_prev = "\uf060"
-net_up = "\uf077"
-net_down = "\uf078"
-backlight_empty = "\uf5dd"
-backlight_1 = "\uf5dd"
-backlight_2 = "\uf5dd"
-backlight_3 = "\uf5dd"
-backlight_4 = "\uf5dd"
-backlight_5 = "\uf5dd"
-backlight_6 = "\uf5dd"
-backlight_7 = "\uf5de"
-backlight_8 = "\uf5de"
-backlight_9 = "\uf5de"
-backlight_10 = "\uf5de"
-backlight_11 = "\uf5de"
-backlight_12 = "\uf5de"
-backlight_13 = "\uf5df"
-backlight_full = "\uf5df"
+name = "material-nf"
 
+[[block]]
+block = "focused_window"
+max_width = 50 
+show_marks = "visible"
 
 [[block]]
 block = "music"
@@ -85,11 +61,10 @@ on_click = "pavucontrol"
 
 [[block]]
 block = "battery"
-interval = 10
-format = "{percentage}"
+driver = "upower"
 
 [[block]]
 block = "time"
 interval = 5
-format = "%a %d/%m %R"
-icons_format = " "
+format = " %a %d/%m %R"
+icons_format = ""
