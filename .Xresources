@@ -1,4 +1,5 @@
 ! xfont settings
+Xft.dpi: 96
 Xcursor.size: 25 
 Xft.antialias: true
 Xft.hinting:   true

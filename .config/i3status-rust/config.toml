@@ -2,14 +2,27 @@
 name = "native"
 
 [theme.overrides]
-
-info_fg = "#86c1b9"
+info_fg = "#11a8cd"
 good_fg = "#a1b56c"
 warning_fg = "#f7ca88"
 critical_fg = "#ab4642"
 
 [icons]
-name = "material-nf"
+name = "none"
+[icons.overrides]
+music = "\uf001"
+music_next = "\uf061"
+music_pause = "\uf04c"
+music_play = "\uf04b"
+music_prev = "\uf060"
+net_up = "\uf077"
+net_down = "\uf078"
+update = "\uf8d4" # nf-mdi-package_up 
+pomodoro = "\ue001" # nf-pom-pomodoro_done
+pomodoro_break = "\uf0f4" # nf-fa-coffee
+pomodoro_paused = "\uf04c" # nf-fa-pause
+pomodoro_started = "\uf04b" # nf-fa-play
+pomodoro_stopped = "\uf04d" # nf-fa-stop
 
 [[block]]
 block = "focused_window"
@@ -18,13 +31,18 @@ show_marks = "visible"
 
 [[block]]
 block = "music"
-buttons = ["prev", "play", "next"]
-max_width = 30
+dynamic_width = true
+hide_when_empty = true
+
+[[block]]
+block = "pomodoro"
+notifier = "i3nag"
 
 [[block]]
 block = "pacman"
 interval = 3600
-aur_command = "paru -Qua"
+aur_command = "yay -Qua"
+hide_when_uptodate = true
 
 [[block]]
 block = "disk_space"
@@ -51,9 +69,6 @@ format_swap = "{swap_used_percents}"
 [[block]]
 block = "cpu"
 interval = 5
-
-[[block]]
-block="backlight"
 
 [[block]]
 block = "sound"
