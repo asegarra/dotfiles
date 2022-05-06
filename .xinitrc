@@ -56,6 +56,7 @@ xset dpms 600 620 640
 
 run redshift
 run unclutter
+run imwheel
 xrandr --output HDMI-1 --primary --left-of eDP-1
 exec i3 > /dev/null 2>&1
 #exec i3 > ~/.i3.log 2>&1
