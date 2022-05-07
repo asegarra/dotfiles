@@ -32,6 +32,10 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+export SSH_ASKPASS=/usr/lib/ssh/x11-ssh-askpass
+export SSH_ASKPASS_REQUIRE=prefer
+eval $(keychain --eval --quiet --noask id_ed25519)
+
 function run {
     if ! pgrep $1;
     then
@@ -39,24 +43,25 @@ function run {
     fi
 }
 
-# Map caps to control
+# map caps to control
 setxkbmap -option caps:swapescape
 
-# Kill X with ctrl+alt+backspace
+# kill X with ctrl+alt+backspace
 setxkbmap -option terminate:ctrl_alt_bksp
 
-# Enable touchpad tap to click
+# enable touchpad tap to click
 xinput set-prop "ELAN0672:00 04F3:3187 Touchpad" "libinput Tapping Enabled" 1
 xinput set-prop "ELAN0672:00 04F3:3187 Touchpad" "libinput Middle Emulation Enabled" 1
 xinput set-prop "Logitech MX Master 3" "libinput Scrolling Pixel Distance" 30
 
-xset b off # Disable system bell
-xset s off # Disable screensaver
+xset b off # disable system bell
+xset s off # disable screensaver
 xset dpms 600 620 640 
+
+xrandr --output HDMI-1 --primary
 
 run redshift
 run unclutter
 run imwheel
-xrandr --output HDMI-1 --primary --left-of eDP-1
-exec i3 > /dev/null 2>&1
-#exec i3 > ~/.i3.log 2>&1
+
+exec i3 > /tmp/i3.log 2>&1
