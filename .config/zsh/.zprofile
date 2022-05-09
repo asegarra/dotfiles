@@ -1,3 +1,13 @@
+if [[ -z "$EDITOR" ]]; then
+  export EDITOR='nvim'
+fi
+if [[ -z "$VISUAL" ]]; then
+  export VISUAL='nvim'
+fi
+if [[ -z "$PAGER" ]]; then
+  export PAGER='less'
+fi
+
 # Start graphical X session
 if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
   startx -- -keeptty > /dev/null 2>&1

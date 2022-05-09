@@ -2,6 +2,7 @@
 name = "native"
 
 [theme.overrides]
+idle_fg = "#abb2bf"
 info_fg = "#11a8cd"
 good_fg = "#a1b56c"
 warning_fg = "#f7ca88"
@@ -10,11 +11,11 @@ critical_fg = "#ab4642"
 [icons]
 name = "none"
 [icons.overrides]
-music = "\uf001"
-music_next = "\uf061"
-music_pause = "\uf04c"
-music_play = "\uf04b"
-music_prev = "\uf060"
+music = "\uf886" # nf-mdi-music_note
+music_next = "\uf9ac" # nf-mdi-skip_next
+music_pause = "\uf8e3" # nf-mdi-pause
+music_play = "\uf909" # nf-mdi-play
+music_prev = "\uf9ad" # nf-mdi-skip_previous
 net_up = "\uf077"
 net_down = "\uf078"
 update = "\uf8d4" # nf-mdi-package_up 
@@ -31,6 +32,7 @@ show_marks = "visible"
 
 [[block]]
 block = "music"
+buttons = ["prev", "play", "next"]
 dynamic_width = true
 hide_when_empty = true
 
