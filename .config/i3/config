@@ -3,6 +3,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod1
+set $exec exec --no-startup-id
 
 # Home row direction keys, like vim
 set $left h
@@ -15,9 +16,6 @@ set $right l
 set $font MesloLGS NF
 
 font pango:$font 9 
-
-# Screen Locker
-set $locker i3lock -c 000000
 
 set $terminal alacritty 
 
@@ -61,8 +59,6 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
-bindsym $mod+b split h; exec --no-startup-id notify-send 'tile horizontally'
-bindsym $mod+v split v; exec --no-startup-id notify-send 'tile vertically'
 bindsym $mod+semicolon split toggle
 
 # enter fullscreen mode for the focused container
@@ -146,52 +142,49 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id $terminal
+bindsym $mod+Return $exec $terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # Audio
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioRaiseVolume $exec amixer -q -D pulse sset Master 5%+  
+bindsym XF86AudioLowerVolume $exec amixer -q -D pulse sset Master 5%- 
+bindsym XF86AudioMute $exec amixer -q -D pulse sset Master toggle
+bindsym XF86AudioMicMute $exec amixer -q -D pulse sset Capture toggle
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id "light -A 10; notify-send -r 1 Brightness $(light -G)%"
-bindsym XF86MonBrightnessDown exec --no-startup-id "light -U 10; notify-send -r 1 Brightness $(light -G)%"
+bindsym XF86MonBrightnessUp $exec "light -A 5; notify-send -r 1 'Brightness up' $(printf %.0f%% $(light -G))"
+bindsym XF86MonBrightnessDown $exec "light -U 5; notify-send -r 1 'Brightness down' $(printf %.0f%% $(light -G))"
 
 # Print Screen
-bindsym Print exec --no-startup-id flameshot gui
+bindsym Print $exec flameshot gui
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d $exec i3-dmenu-desktop
 
 # File manager
-bindsym $mod+Control+f exec thunar
-# Browser
-bindsym $mod+Control+w exec brave 
-# Calculator
-bindsym $mod+Control+c exec --no-startup-id galculator
-# Music
-bindsym $mod+control+m exec --no-startup-id $terminal -t "ncmpcpp" -e "ncmpcpp"
+bindsym $mod+t $exec thunar
 
-bindsym $mod+F10 exec --no-startup-id playerctl play-pause
-bindsym $mod+F11 exec --no-startup-id playerctl previous
-bindsym $mod+F12 exec --no-startup-id playerctl next
+# Browser
+bindsym $mod+b $exec brave 
+
+bindsym $mod+F10 $exec playerctl play-pause
+bindsym $mod+F11 $exec playerctl previous
+bindsym $mod+F12 $exec playerctl next
 
 # Toggle redshift
-bindsym $mod+Control+r exec --no-startup-id "pkill -USR1 redshift"; exec --no-startup-id notify-send "Toggling redshift..." -u low
+bindsym $mod+z $exec "pkill -USR1 redshift"; $exec notify-send "Toggling redshift..." -u low
 
 # Set shut down, restart and locking features
 bindsym $mod+Escape mode "$mode_system"
 set $mode_system (l)ock, (e)xit, (s)uspend, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-  bindsym l exec --no-startup-id $locker, mode "default"
-  bindsym s exec --no-startup-id systemctl suspend, mode "default"
-  bindsym e exec --no-startup-id i3-msg exit, mode "default"
-  bindsym r exec --no-startup-id systemctl reboot, mode "default"
-  bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+  bindsym l $exec loginctl lock-session, mode "default"
+  bindsym s $exec systemctl suspend, mode "default"
+  bindsym e $exec i3-msg exit, mode "default"
+  bindsym r $exec systemctl reboot, mode "default"
+  bindsym Shift+s $exec systemctl poweroff -i, mode "default"
 
   # exit system mode: "Enter" or "Escape"
   bindsym Return mode "default"
@@ -200,22 +193,16 @@ mode "$mode_system" {
 
 set $mode_noti Notifications (Return) invoke, (r) restore (d) dismiss, (Shift+d) dismiss all
 mode "$mode_noti" {
-  bindsym Return exec --no-startup-id dunstctl action ; exec --no-startup-id dunstctl close; mode "default"
-  bindsym d exec --no-startup-id dunstctl close; mode "default"
-  bindsym Shift+d exec --no-startup-id dunstctl close-all; mode "default"
-  bindsym r exec --no-startup-id dunstctl history-pop
+  bindsym Return $exec dunstctl action ; $exec dunstctl close; mode "default"
+  bindsym d $exec dunstctl close; mode "default"
+  bindsym Shift+d $exec dunstctl close-all; mode "default"
+  bindsym r $exec dunstctl history-pop
   bindsym Escape mode "default"
 }
 bindsym $mod+n mode "$mode_noti"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-  # These bindings trigger as soon as you enter the resize mode
-
-  # Pressing left will shrink the window’s width.
-  # Pressing right will grow the window’s width.
-  # Pressing up will shrink the window’s height.
-  # Pressing down will grow the window’s height.
   bindsym $left resize shrink width 10 px or 10 ppt
   bindsym $down resize grow height 10 px or 10 ppt
   bindsym $up resize shrink height 10 px or 10 ppt
@@ -236,8 +223,8 @@ bindsym $mod+r mode "resize"
 
 set $mode_xrandr xrandr (l) laptop, (d) docked
 mode "$mode_xrandr" {
-  bindsym l exec --no-startup-id autorandr laptop; mode "default"
-  bindsym d exec --no-startup-id autorandr docked; mode "default"
+  bindsym l $exec autorandr laptop; mode "default"
+  bindsym d $exec autorandr docked; mode "default"
   bindsym Escape mode "default"
 }
 bindsym $mod+x mode "$mode_xrandr"
@@ -252,31 +239,6 @@ for_window [class="Blueman"] floating enable border normal
 for_window [title="nmtui"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="Alacritty" title="ncmpcpp"] floating enable sticky enable
-
-# Autostart applications
-exec --no-startup-id feh --bg-fil ~/.config/wall.jpg
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-#exec --no-startup-id nm-applet
-#exec --no-startup-id blueman-applet
-exec --no-startup-id picom -b
-
-# Start XDG autostart .desktop files using dex. See also
-# https://wiki.archlinux.org/index.php/XDG_Autostart
-# exec --no-startup-id dex --autostart --environment i3
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- $locker --nofork
-
-# Suspend after 60 minutes
-exec --no-startup-id xautolock -time 60 -locker "systemctl suspend" -notify 10 \
-  -notifier 'notify-send -u critical -t 8 "PC will suspend in 10 seconds"' -detectsleep  
-
-# Make sure dunst is used for notifications
-exec --no-startup-id dunst
-
-# mpd mpris2 support
-# exec --no-startup-id mpDris2
 
 bar {
   position bottom

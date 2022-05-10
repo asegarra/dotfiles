@@ -32,17 +32,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-export SSH_ASKPASS=/usr/lib/ssh/x11-ssh-askpass
-export SSH_ASKPASS_REQUIRE=prefer
-eval $(keychain --eval --quiet --noask id_ed25519)
-
-function run {
-    if ! pgrep $1;
-    then
-        $@&
-    fi
-}
-
 # map caps to control
 setxkbmap -option caps:swapescape
 
@@ -60,8 +49,27 @@ xset dpms 600 620 640
 
 xrandr --output HDMI-1 --primary
 
+export SSH_ASKPASS=/usr/lib/ssh/x11-ssh-askpass
+export SSH_ASKPASS_REQUIRE=prefer
+eval $(keychain --eval --quiet --noask id_ed25519)
+
+function run {
+    if ! pgrep $1;
+    then
+        $@&
+    fi
+}
+
 run redshift
 run unclutter
 run imwheel
+run dunst
+playerctld daemon &
+picom -b &
+feh --bg-fil ~/.config/wall.jpg &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+xss-lock --transfer-sleep-lock -- i3lock -c 000000 --nofork &
+xautolock -time 60 -locker "systemctl suspend" -notify 10 -notifier \
+	'notify-send -u critical -t 8 "PC will suspend in 10 seconds"' -detectsleep &
 
 exec i3 > /tmp/i3.log 2>&1
