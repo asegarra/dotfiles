@@ -2,7 +2,7 @@
 name = "native"
 
 [theme.overrides]
-idle_fg = "#abb2bf"
+#idle_fg = "#abb2bf"
 info_fg = "#11a8cd"
 good_fg = "#a1b56c"
 warning_fg = "#f7ca88"

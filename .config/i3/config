@@ -2,7 +2,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 set $exec exec --no-startup-id
 
 # Home row direction keys, like vim
@@ -60,6 +60,8 @@ bindsym $mod+Shift+Tab move container to workspace back_and_forth; workspace bac
 
 # split orientation
 bindsym $mod+semicolon split toggle
+bindsym $mod+u split h
+bindsym $mod+i split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -148,10 +150,10 @@ bindsym $mod+Return $exec $terminal
 bindsym $mod+Shift+q kill
 
 # Audio
-bindsym XF86AudioRaiseVolume $exec amixer -q -D pulse sset Master 5%+  
-bindsym XF86AudioLowerVolume $exec amixer -q -D pulse sset Master 5%- 
-bindsym XF86AudioMute $exec amixer -q -D pulse sset Master toggle
-bindsym XF86AudioMicMute $exec amixer -q -D pulse sset Capture toggle
+#bindsym XF86AudioRaiseVolume $exec amixer -q set Master 5%+ unmute
+#bindsym XF86AudioLowerVolume $exec amixer -q set Master 5%- unmute 
+#bindsym XF86AudioMute $exec amixer -q set Master toggle
+bindsym XF86AudioMicMute $exec amixer -q set Capture toggle
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp $exec "light -A 5; notify-send -r 1 'Brightness up' $(printf %.0f%% $(light -G))"
