@@ -62,11 +62,11 @@ function run {
 
 run redshift
 run unclutter
-run imwheel
+run imwheel -d
 run dunst
-playerctld daemon &
-picom -b &
-feh --bg-fil ~/.config/wall.jpg &
+run playerctld daemon
+run picom
+run feh --bg-fil ~/.config/wall.jpg
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 xss-lock --transfer-sleep-lock -- i3lock -c 000000 --nofork &
 xautolock -time 60 -locker "systemctl suspend" -notify 10 -notifier \

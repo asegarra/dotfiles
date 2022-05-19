@@ -33,7 +33,7 @@ from libqtile.utils import guess_terminal
 
 mod = "mod4"
 terminal = guess_terminal()
-font = "RobotoMonoNerdFont"
+font = "MesloLGS NF"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -180,9 +180,9 @@ screens = [
                 ),
                 widget.CurrentScreen(),
                 widget.Memory(update_interval=10),
-                widget.CPU(format="load: {load_percent}%", update_interval=5),
-                widget.PulseVolume(fmt="vol: {}"),
-                widget.Battery(format="bat: {char} {percent:2.0%}"),
+                widget.CPU(format="LOAD: {load_percent}%", update_interval=5),
+                widget.PulseVolume(fmt="/ VOLUME: {}"),
+                widget.Battery(format="BAT: {char} {percent:2.0%}"),
                 widget.Clock(format='%a %d/%m %I:%M %p'),
                 widget.Systray(),
             ],

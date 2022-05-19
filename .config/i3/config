@@ -19,10 +19,6 @@ font pango:$font 9
 
 set $terminal alacritty 
 
-# Default borders 
-default_border pixel 1
-default_floating_border normal
-
 # Hide borders
 hide_edge_borders smart 
 

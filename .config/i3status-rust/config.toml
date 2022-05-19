@@ -26,11 +26,6 @@ pomodoro_started = "\uf04b" # nf-fa-play
 pomodoro_stopped = "\uf04d" # nf-fa-stop
 
 [[block]]
-block = "focused_window"
-max_width = 50 
-show_marks = "visible"
-
-[[block]]
 block = "music"
 buttons = ["prev", "play", "next"]
 dynamic_width = true
