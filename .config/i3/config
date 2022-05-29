@@ -17,7 +17,7 @@ set $font MesloLGS NF
 
 font pango:$font 9 
 
-set $terminal alacritty 
+set $terminal xfce4-terminal 
 
 # Hide borders
 hide_edge_borders smart 
@@ -56,8 +56,8 @@ bindsym $mod+Shift+Tab move container to workspace back_and_forth; workspace bac
 
 # split orientation
 bindsym $mod+semicolon split toggle
-bindsym $mod+u split h
-bindsym $mod+i split v
+bindsym $mod+b split h
+bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -146,14 +146,14 @@ bindsym $mod+Return $exec $terminal
 bindsym $mod+Shift+q kill
 
 # Audio
-#bindsym XF86AudioRaiseVolume $exec amixer -q set Master 5%+ unmute
-#bindsym XF86AudioLowerVolume $exec amixer -q set Master 5%- unmute 
-#bindsym XF86AudioMute $exec amixer -q set Master toggle
+bindsym XF86AudioRaiseVolume $exec amixer -q set Master 5%+ unmute
+bindsym XF86AudioLowerVolume $exec amixer -q set Master 5%- unmute 
+bindsym XF86AudioMute $exec amixer -q set Master toggle
 bindsym XF86AudioMicMute $exec amixer -q set Capture toggle
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp $exec "light -A 5; notify-send -r 1 'Brightness up' $(printf %.0f%% $(light -G))"
-bindsym XF86MonBrightnessDown $exec "light -U 5; notify-send -r 1 'Brightness down' $(printf %.0f%% $(light -G))"
+bindsym XF86MonBrightnessUp $exec "light -A 5; dunstify  -r 1 'Brightness up' $(printf %.0f%% $(light -G))"
+bindsym XF86MonBrightnessDown $exec "light -U 5; dunstify -r 1 'Brightness down' $(printf %.0f%% $(light -G))"
 
 # Print Screen
 bindsym Print $exec flameshot gui
@@ -162,10 +162,10 @@ bindsym Print $exec flameshot gui
 bindsym $mod+d $exec i3-dmenu-desktop
 
 # File manager
-bindsym $mod+t $exec thunar
+bindsym $mod+shift+f $exec thunar
 
 # Browser
-bindsym $mod+b $exec brave 
+bindsym $mod+shift+b $exec brave-browser 
 
 bindsym $mod+F10 $exec playerctl play-pause
 bindsym $mod+F11 $exec playerctl previous
@@ -240,7 +240,7 @@ for_window [class="Alacritty" title="ncmpcpp"] floating enable sticky enable
 
 bar {
   position bottom
-  status_command i3status-rs
+  status_command i3status
   tray_output primary
   font pango:$font 10
 }
