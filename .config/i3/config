@@ -19,6 +19,9 @@ font pango:$font 9
 
 set $terminal xfce4-terminal 
 
+# remove borders
+default_border pixel 1
+
 # Hide borders
 hide_edge_borders smart 
 
@@ -238,10 +241,12 @@ for_window [title="nmtui"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="Alacritty" title="ncmpcpp"] floating enable sticky enable
 
-bar {
-  position bottom
-  status_command i3status
-  tray_output primary
-  font pango:$font 10
-}
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+#bar {
+  #position bottom
+  #status_command i3status
+  #tray_output primary
+  #font pango:$font 10
+#}
 

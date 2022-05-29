@@ -28,7 +28,7 @@ run dunst
 run playerctld daemon
 run nm-applet
 nitrogen --restore
-#run picom
+run picom
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 xss-lock --transfer-sleep-lock -- i3lock -c 000000 --nofork &
 xautolock -time 60 -locker "systemctl suspend" -notify 10 -notifier \
