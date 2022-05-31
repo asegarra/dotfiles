@@ -175,7 +175,7 @@ bindsym $mod+F11 $exec playerctl previous
 bindsym $mod+F12 $exec playerctl next
 
 # Toggle redshift
-bindsym $mod+z $exec "pkill -USR1 redshift"; $exec notify-send "Toggling redshift..." -u low
+bindsym $mod+shift+n $exec "pkill -USR1 redshift"; $exec notify-send "Toggling redshift..." -u low
 
 # Set shut down, restart and locking features
 bindsym $mod+Escape mode "$mode_system"
@@ -241,12 +241,12 @@ for_window [title="nmtui"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="Alacritty" title="ncmpcpp"] floating enable sticky enable
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-#bar {
-  #position bottom
-  #status_command i3status
-  #tray_output primary
-  #font pango:$font 10
-#}
+bar {
+  position bottom
+  status_command i3status-rs
+  tray_output primary
+  font pango:$font 9
+}
 

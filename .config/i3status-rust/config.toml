@@ -36,12 +36,6 @@ block = "pomodoro"
 notifier = "i3nag"
 
 [[block]]
-block = "pacman"
-interval = 3600
-aur_command = "yay -Qua"
-hide_when_uptodate = true
-
-[[block]]
 block = "disk_space"
 path = "/"
 alias = "/"
