@@ -222,13 +222,7 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-set $mode_xrandr xrandr (l) laptop, (d) docked
-mode "$mode_xrandr" {
-  bindsym l $exec autorandr laptop; mode "default"
-  bindsym d $exec autorandr docked; mode "default"
-  bindsym Escape mode "default"
-}
-bindsym $mod+x mode "$mode_xrandr"
+bindsym $mod+x $exec autorandr --change
 
 # App rules
 for_window [class="Galculator"] floating enable border normal
