@@ -235,7 +235,8 @@ for_window [title="nmtui"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="Alacritty" title="ncmpcpp"] floating enable sticky enable
 
-#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id nitrogen --restore
+$exec $HOME/.config/i3/autostart.sh
 
 bar {
   position bottom
