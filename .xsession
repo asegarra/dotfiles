@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# map caps to control
+# swap capslock and escape
 setxkbmap -option caps:swapescape
 
 # kill X with ctrl+alt+backspace

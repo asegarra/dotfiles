@@ -30,6 +30,7 @@ block = "music"
 buttons = ["prev", "play", "next"]
 dynamic_width = true
 hide_when_empty = true
+max_width = 30
 
 [[block]]
 block = "pomodoro"
