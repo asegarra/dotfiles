@@ -17,7 +17,7 @@ set $font MesloLGS NF
 
 font pango:$font 9 
 
-set $terminal alacritty
+set $terminal kitty
 
 # remove borders
 default_border pixel 1
