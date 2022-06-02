@@ -17,7 +17,7 @@ set $font MesloLGS NF
 
 font pango:$font 9 
 
-set $terminal xfce4-terminal 
+set $terminal alacritty
 
 # remove borders
 default_border pixel 1
@@ -162,7 +162,7 @@ bindsym XF86MonBrightnessDown $exec "light -U 5; dunstify -r 1 'Brightness down'
 bindsym Print $exec flameshot gui
 
 # start program launcher
-bindsym $mod+d $exec i3-dmenu-desktop
+bindsym $mod+d $exec rofi -show drun 
 
 # File manager
 bindsym $mod+shift+f $exec thunar
