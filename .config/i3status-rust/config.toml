@@ -51,6 +51,7 @@ block = "net"
 format = "{speed_up;K*b}{speed_down;K*b}"
 on_click = "alacritty -t 'nmtui' -e nmtui"
 interval = 5
+hide_inactive = true
 
 [[block]]
 block = "memory"

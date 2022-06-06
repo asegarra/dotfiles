@@ -15,4 +15,6 @@ xset b off # disable system bell
 xset s off # disable screensaver
 xset dpms 600 620 640 
 
+~/.config/i3/autostart.sh
+
 exec i3

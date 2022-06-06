@@ -17,7 +17,7 @@ set $font MesloLGS NF
 
 font pango:$font 9 
 
-set $terminal kitty
+set $terminal alacritty
 
 # remove borders
 default_border pixel 1
@@ -236,7 +236,6 @@ for_window [class="Lxappearance"] floating enable
 for_window [class="Alacritty" title="ncmpcpp"] floating enable sticky enable
 
 exec_always --no-startup-id nitrogen --restore
-$exec $HOME/.config/i3/autostart.sh
 
 bar {
   position bottom
