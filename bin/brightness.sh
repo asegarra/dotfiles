@@ -8,7 +8,7 @@ fi
 notify() {
     local current_level="$(light -G)"
     local icon='notification-display-brightness'
-    notify-send -i $icon -h string:x-dunst-stack-tag:light -h int:value:$current_level $(printf %.0f%% $current_level)
+    notify-send -c 'osd' -i $icon -h string:x-dunst-stack-tag:light -h int:value:$current_level $(printf %.0f%% $current_level)
     paplay /usr/share/sounds/freedesktop/stereo/message.oga
 }
 

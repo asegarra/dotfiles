@@ -19,3 +19,7 @@ background-color=#900000
 text-color=#ffffff
 border-color=#aaaaaa
 default-timeout=0
+
+[category=osd]
+anchor=center
+default-timeout=2000
