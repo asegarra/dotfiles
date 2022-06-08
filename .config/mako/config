@@ -1,22 +1,21 @@
-font=MesloLGS Nerd Font 9
+font=MesloLGS NF 9
 default-timeout=5000
 height=300
-width=300
-icon-path=/usr/share/icons/Papirus-Dark:/usr/share/icons/Adwaita
-max-icon-size=32
+width=350
+icon-path=/usr/share/icons/Papirus
 
 [urgency="low"]
-background-color=#353b45
-text-color=#abb2bf
-border-color=#abb2bf
+background-color=#222222
+text-color=#888888
+border-color=#aaaaaa
 
 [urgency="normal"]
-background-color=#3e4451
-text-color=#61afef
-border-color=#abb2bf
+background-color=#285577
+text-color=#ffffff
+border-color=#aaaaaa
 
 [urgency="critical"]
 background-color=#900000
 text-color=#ffffff
-border-color=#abb2bf
+border-color=#aaaaaa
 default-timeout=0
