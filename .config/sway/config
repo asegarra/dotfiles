@@ -10,15 +10,14 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-exec foot --server
-set $term footclient
+set $term foot
 
 set $grimshot "grimshot"
 
 set $font MesloLGS NF
 
 # Application launcher
-set $menu fuzzel -D "auto" -i "Papirus-Dark" -w 40 -f "$font:size=10" -b "282c34ff" -t "abb2bfff" -C "abb2bfff" -s "545862ff" -S "61afefff" -T "$term" -p 5
+set $menu fuzzel -D "no" -i "Papirus-Dark" -w 40 -f "$font:size=14" -b "282c34ff" -t "abb2bfff" -C "abb2bfff" -s "545862ff" -S "61afefff" -T "$term" -p 5
 
 font pango:$font 9
 
@@ -89,7 +88,7 @@ bindsym $mod+d exec $menu
 bindsym $mod+shift+b exec brave-browser
 
 # File manager
-bindsym $mod+shift+f exec thunar
+bindsym $mod+shift+f exec nautilus
 
 # Music
 bindsym $mod+shift+m exec cantata
@@ -308,15 +307,11 @@ bar {
 }
 
 # App rules
-for_window [app_id="galculator"] floating enable; border normal
 for_window [app_id="firefox" title="About Mozilla Firefox"] floating enable; border normal
 for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable; sticky enable; border normal
 for_window [app_id="dconf-editor"] floating enable; border csd
 for_window [app_id="pavucontrol"] floating enable; border normal
 for_window [app_id="blueman"] floating enable
-for_window [title="nmtui"] floating enable
-for_window [app_id="wdisplays"] floating enable
-for_window [title="ncmpcpp"] floating enable; sticky enable
 
 # Change title of xwayland apps
 for_window [shell=".*"] title_format "%title [%shell]"
@@ -333,6 +328,8 @@ exec_always {
 # Autostart apps
 #
 
+exec mako
+
 exec wlsunset -t 3200 -S "06:30" -s "20:00" -d 0
 
 exec /usr/libexec/polkit-gnome-authentication-agent-1
@@ -340,6 +337,6 @@ exec /usr/libexec/polkit-gnome-authentication-agent-1
 exec playerctld daemon
 
 exec_always "pkill kanshi; exec kanshi"
-
+d
 # Additional config
 include /etc/sway/config.d/*
