@@ -20,15 +20,10 @@ set $font MesloLGS NF
 set $menu fuzzel -D "no" -i "Papirus-Dark" -w 40 -f "$font:size=14" -b "282c34ff" -t "abb2bfff" -C "abb2bfff" -s "545862ff" -S "61afefff" -T "$term" -p 5
 
 font pango:$font 9
-
-titlebar_padding 1
-
-# Smart borders 
-smart_borders on
-
-# Border style 
-default_border pixel 1
-default_floating_border normal
+titlebar_padding 2 1 
+smart_borders no_gaps
+focus_follows_mouse no
+#gaps inner 5
 
 ### Output configuration
 #
@@ -299,11 +294,8 @@ bindsym print mode "$mode_screenshot"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-  position bottom
   status_command i3status-rs 
-  #tray_output primary
-  font pango:$font 9
-  pango_markup enabled
+  tray_output primary
 }
 
 # App rules
@@ -329,14 +321,10 @@ exec_always {
 #
 
 exec mako
-
 exec wlsunset -t 3200 -S "06:30" -s "20:00" -d 0
-
 exec /usr/libexec/polkit-gnome-authentication-agent-1
-
 exec playerctld daemon
-
 exec_always "pkill kanshi; exec kanshi"
-d
+
 # Additional config
 include /etc/sway/config.d/*
