@@ -28,7 +28,7 @@ focus_follows_mouse no
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/default.png fill
+output * bg ~/pictures/wall.jpeg fill
 
 # Screen locker
 set $locker swaylock -f -c 000000 
@@ -86,7 +86,7 @@ bindsym $mod+shift+b exec brave-browser
 bindsym $mod+shift+f exec nautilus
 
 # Music
-bindsym $mod+shift+m exec cantata
+bindsym $mod+shift+m exec $term -T ncmpcpp -e ncmpcpp
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -302,14 +302,15 @@ bar {
 }
 
 # App rules
-for_window [app_id="firefox" title="About Mozilla Firefox"] floating enable; border normal
-for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable; sticky enable; border normal
-for_window [app_id="dconf-editor"] floating enable; border csd
-for_window [app_id="pavucontrol"] floating enable; border normal
+for_window [app_id="firefox" title="About Mozilla Firefox"] floating enable
+for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable; sticky enable
+for_window [app_id="dconf-editor"] floating enable 
+for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="blueman"] floating enable
+for_window [app_id="$term" title="ncmpcpp"] floating enable
 
 # Change title of xwayland apps
-for_window [shell=".*"] title_format "%title [%shell]"
+for_window [shell=".*"] title_format "[%shell] %title"
 for_window [shell="xdg_shell"] title_format "%title"
 
 # Gtk settings
