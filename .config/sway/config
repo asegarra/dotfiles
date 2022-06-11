@@ -21,9 +21,9 @@ set $menu fuzzel -D "no" -i "Papirus-Dark" -w 40 -f "$font:size=14" -b "282c34ff
 
 font pango:$font 9
 titlebar_padding 2 1 
+default_border pixel 2
 smart_borders no_gaps
 focus_follows_mouse no
-#gaps inner 5
 
 ### Output configuration
 #
