@@ -7,11 +7,14 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-eval $(thefuck --alias)
+#eval $(thefuck --alias)
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/doc/pkgfile/command-not-found.zsh
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
+
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!

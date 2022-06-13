@@ -28,7 +28,7 @@ focus_follows_mouse no
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/pictures/wall.jpeg fill
+output * bg ~/.config/sway/wall.jpeg fill
 
 # Screen locker
 set $locker swaylock -f -c 000000 
@@ -80,13 +80,13 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec $menu
 
 # Browser
-bindsym $mod+shift+b exec brave-browser
+bindsym $mod+shift+b exec brave
 
 # File manager
 bindsym $mod+shift+f exec nautilus
 
 # Music
-bindsym $mod+shift+m exec $term -T ncmpcpp -e ncmpcpp
+bindsym $mod+shift+m exec $term -t ncmpcpp -e ncmpcpp
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -307,7 +307,7 @@ for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable; stic
 for_window [app_id="dconf-editor"] floating enable 
 for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="blueman"] floating enable
-for_window [app_id="$term" title="ncmpcpp"] floating enable
+for_window [app_id="Alacritty" title="ncmpcpp"] floating enable
 
 # Change title of xwayland apps
 for_window [shell=".*"] title_format "[%shell] %title"
@@ -326,7 +326,7 @@ exec_always {
 
 exec mako
 exec wlsunset -t 3200 -S "06:30" -s "20:00" -d 0
-exec /usr/libexec/polkit-gnome-authentication-agent-1
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec playerctld daemon
 exec_always "pkill kanshi; exec kanshi"
 

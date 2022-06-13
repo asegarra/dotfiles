@@ -74,5 +74,5 @@ driver = "upower"
 [[block]]
 block = "time"
 interval = 5
-format = " %a %d/%m %R"
+format = " %a %d/%m %I:%M %p"
 icons_format = ""
