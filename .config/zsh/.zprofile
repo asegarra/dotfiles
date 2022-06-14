@@ -8,6 +8,8 @@ if [[ -z "$PAGER" ]]; then
   export PAGER='less'
 fi
 
+eval $(keychain --eval --noask --quiet id_ed25519)
+
 # Start graphical X session
 if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty2" ]; then
   startx -- -keeptty > /dev/null 2>&1
