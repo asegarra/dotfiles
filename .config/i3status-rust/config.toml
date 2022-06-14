@@ -58,10 +58,12 @@ block = "memory"
 display_type = "memory"
 format_mem = "{mem_used_percents}"
 format_swap = "{swap_used_percents}"
+on_click = "alacritty -t 'htop' -e htop"
 
 [[block]]
 block = "cpu"
 interval = 5
+on_click = "alacritty -t 'htop' -e htop"
 
 [[block]]
 block = "sound"

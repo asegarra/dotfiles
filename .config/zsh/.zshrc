@@ -15,6 +15,8 @@ source /usr/share/doc/pkgfile/command-not-found.zsh
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
@@ -23,3 +25,6 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+
+alias la="exa -la --icons"
+alias ll="exa -l --icons"
