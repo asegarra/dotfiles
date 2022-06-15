@@ -229,6 +229,9 @@ bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ to
 bindsym --locked XF86MonBrightnessDown exec ~/bin/brightness.sh down 
 bindsym --locked XF86MonBrightnessUp exec ~/bin/brightness.sh up
 
+# Toggle night light
+bindsym $mod+shift+n exec pkill -USR1 gammastep
+
 #
 # Resizing containers:
 #
@@ -325,7 +328,7 @@ exec_always {
 #
 
 exec mako
-exec wlsunset -t 3200 -S "06:30" -s "20:00" -d 0
+exec gammastep
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec playerctld daemon
 exec_always "pkill kanshi; exec kanshi"
