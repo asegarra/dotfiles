@@ -18,7 +18,7 @@ source /usr/share/fzf/key-bindings.zsh
 
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+source $ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
