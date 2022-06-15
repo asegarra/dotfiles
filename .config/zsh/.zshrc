@@ -5,8 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 #eval $(thefuck --alias)
 
 source $ZDOTDIR/plugins/fzf-tab/fzf-tab.plugin.zsh
