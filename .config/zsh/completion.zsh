@@ -3,7 +3,7 @@ setopt always_to_end     # Move cursor to the end of a completed word.
 setopt no_case_glob      # Make globbing case insensitive.
 
 autoload -Uz compinit 
-compinit -C -d "$HOME/.cache/zsh/zcompdump"
+compinit -C -d "$HOME/.config/zsh/zcompdump"
 
 _comp_options+=(globdots) # match files beginning with dots (hidden)
 
