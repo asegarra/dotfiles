@@ -37,6 +37,13 @@ block = "pomodoro"
 notifier = "i3nag"
 
 [[block]]
+block = "pacman"
+interval = 7200
+format = "{both}"
+critical_updates_regex = "(linux|linux-lts)"
+aur_command = "paru -Qua"
+
+[[block]]
 block = "disk_space"
 path = "/"
 alias = "/"
