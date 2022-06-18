@@ -1,3 +1,6 @@
+
+eval $(keychain --eval --noask --quiet id_ed25519)
+
 # Start graphical wayland session
 if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
   export XDG_CURRENT_DESKTOP=sway

@@ -15,8 +15,6 @@ source /usr/share/doc/pkgfile/command-not-found.zsh
 
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
-eval $(keychain --eval --noask --quiet id_ed25519)
-
 eval "$(starship init zsh)"
 
 # Set current directory as terminal title
