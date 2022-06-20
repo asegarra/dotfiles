@@ -1,3 +1,6 @@
+# Exit if not running interactively
+# $- contains the current zsh option flags
+[[ $- != *i* ]] && return
 
 source $HOME/.config/zsh/env.zsh
 source $HOME/.config/zsh/alias.zsh
