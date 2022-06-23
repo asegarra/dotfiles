@@ -1,4 +1,3 @@
-
 eval $(keychain --eval --noask --quiet id_ed25519)
 
 # Start graphical wayland session
