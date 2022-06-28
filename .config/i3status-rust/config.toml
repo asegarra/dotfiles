@@ -73,6 +73,13 @@ interval = 5
 on_click = "alacritty -t 'htop' -e htop"
 
 [[block]]
+block = "temperature"
+interval = 10
+chip = "coretemp-isa-*"
+format = "{average}"
+collapsed = false
+
+[[block]]
 block = "sound"
 on_click = "pavucontrol"
 
