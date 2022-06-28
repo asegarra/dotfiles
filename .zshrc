@@ -1,7 +1,3 @@
-# Exit if not running interactively
-# $- contains the current zsh option flags
-[[ $- != *i* ]] && return
-
 source $HOME/.config/zsh/env.zsh
 source $HOME/.config/zsh/alias.zsh
 source $HOME/.config/zsh/keys.zsh
@@ -19,6 +15,8 @@ source /usr/share/doc/pkgfile/command-not-found.zsh
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
 eval "$(starship init zsh)"
+
+. $HOME/.asdf/asdf.sh
 
 # Set current directory as terminal title
 [[ ${TERM} != dumb ]] && () {

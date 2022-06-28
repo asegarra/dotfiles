@@ -11,6 +11,7 @@ path=(
   $HOME/{,s}bin(N)
   /opt/local/{,s}bin(N)
   /usr/local/{,s}bin(N)
+  $HOME/.cargo/bin
   $path
 )
 
