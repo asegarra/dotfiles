@@ -1,5 +1,4 @@
 profile dock {
   output eDP-1 disable
-  output DP-6 position 0,0
-  output DP-7 position 1920,0
+  output HDMI-A-1 position 0,0
 }

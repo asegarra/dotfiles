@@ -38,7 +38,7 @@ notifier = "i3nag"
 
 [[block]]
 block = "pacman"
-interval = 7200
+interval = 3600
 format = "{both}"
 critical_updates_regex = "(linux|linux-lts)"
 aur_command = "paru -Qua"
@@ -78,6 +78,7 @@ interval = 10
 chip = "coretemp-isa-*"
 format = "{average}"
 collapsed = false
+icons_format = " T"
 
 [[block]]
 block = "sound"
@@ -86,6 +87,11 @@ on_click = "pavucontrol"
 [[block]]
 block = "battery"
 driver = "upower"
+
+[[block]]
+block = "keyboard_layout"
+driver = "sway"
+format = "{variant}"
 
 [[block]]
 block = "time"

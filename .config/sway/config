@@ -3,9 +3,9 @@
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
-set $mod Mod4
+set $mod Mod1
 
-set $alt Mod1
+set $meta Mod4
 
 # Home row direction keys, like vim
 set $left h
@@ -55,7 +55,9 @@ bindswitch --locked lid:off output eDP-1 enable
 
 ### Input configuration
 input "type:keyboard" {
-  xkb_options caps:swapescape
+  xkb_layout us,real-prog-dvorak
+  # xkb_variant colemak,
+  xkb_options caps:swapescape,grp:alt_space_toggle
 }
 
 input "type:touchpad" {
@@ -95,7 +97,7 @@ bindsym $mod+shift+f exec thunar
 bindsym $mod+shift+m exec $term -t ncmpcpp -e ncmpcpp
 
 # Scripts
-bindsym $alt+tab exec ~/.config/sway/scripts/sway-window-switcher
+bindsym $meta+tab exec ~/.config/sway/scripts/sway-window-switcher
 bindsym $mod+shift+r exec ~/.config/sway/scripts/sway-rename
 bindsym $mod+n exec ~/.config/sway/scripts/sway-new-workspace
 # bindsym $mod+shift+m exec ~/.config/sway/scripts/sway-mark-switcher
@@ -146,6 +148,7 @@ bindsym $mod+shift+Right move right
 # Workspaces:
 #
 # Switch to workspace
+
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
 bindsym $mod+3 workspace number 3
@@ -156,7 +159,23 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
+
+# Custom Programmer Dvorak
+#bindsym $mod+plus workspace 1
+#bindsym $mod+bracketleft workspace 2
+#bindsym $mod+braceleft workspace 3
+#bindsym $mod+parenleft workspace 4
+#bindsym $mod+ampersand workspace 5
+#bindsym $mod+equal workspace 6
+#bindsym $mod+parenright workspace 7
+#bindsym $mod+braceright workspace 8
+#bindsym $mod+bracketright workspace 9
+#bindsym $mod+asterisk workspace 10
+
+
 # Move focused container to workspace
+# Note: workspaces can have any name you want, not just numbers.
+# We just use 1-10 as the default.
 bindsym $mod+shift+1 move container to workspace number 1
 bindsym $mod+shift+2 move container to workspace number 2
 bindsym $mod+shift+3 move container to workspace number 3
@@ -167,8 +186,18 @@ bindsym $mod+shift+7 move container to workspace number 7
 bindsym $mod+shift+8 move container to workspace number 8
 bindsym $mod+shift+9 move container to workspace number 9
 bindsym $mod+shift+0 move container to workspace number 10
-# Note: workspaces can have any name you want, not just numbers.
-# We just use 1-10 as the default.
+
+# Custom Programmer Dvorak
+#bindsym $mod+shift+plus move container to workspace number 1
+#bindsym $mod+shift+bracketleft move container to workspace number 2
+#bindsym $mod+shift+braceleft move container to workspace number 3
+#bindsym $mod+shift+parenleft move container to workspace number 4
+#bindsym $mod+shift+ampersand move container to workspace number 5
+#bindsym $mod+shift+equal move container to workspace number 6
+#bindsym $mod+shift+parenright move container to workspace number 7
+#bindsym $mod+shift+braceright move container to workspace number 8
+#bindsym $mod+shift+bracketright move container to workspace number 9
+#bindsym $mod+shift+asterisk move container to workspace number 10
 
 # Navigate workspaces next / previous
 bindsym $mod+prior workspace prev
@@ -296,13 +325,13 @@ bindsym $mod+shift+n mode "$mode_noti"
 
 set $mode_screenshot  (s) screen, (a) area, (w) window (Shift for )
 mode "$mode_screenshot" {
-  bindsym s exec $grimshot --notify copy screen; mode "default"
-  bindsym a exec $grimshot --notify copy area; mode "default"
-  bindsym w exec $grimshot --notify copy window; mode "default"
+  bindsym s exec "$grimshot" --notify copy screen; mode "default"
+  bindsym a exec "$grimshot" --notify copy area; mode "default"
+  bindsym w exec "$grimshot" --notify copy window; mode "default"
 
-  bindsym shift+s exec $grimshot --notify save screen; mode "default"
-  bindsym shift+a exec $grimshot --notify save area; mode "default"
-  bindsym shift+w exec $grimshot --notify save window; mode "default"
+  bindsym shift+s exec "$grimshot" --notify save screen; mode "default"
+  bindsym shift+a exec "$grimshot" --notify save area; mode "default"
+  bindsym shift+w exec "$grimshot" --notify save window; mode "default"
 
   bindsym escape mode "default"
   bindsym return mode "default"
@@ -326,6 +355,8 @@ for_window [app_id="dconf-editor"] floating enable
 for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="blueman"] floating enable
 for_window [app_id="Alacritty" title="ncmpcpp"] floating enable
+for_window [app_id="Alacritty" title="htop"] floating enable
+for_window [app_id="Alacritty" title="nmtui"] floating enable
 for_window [title="fzf-switcher"] floating enable
 
 # Change title of xwayland apps
@@ -337,19 +368,19 @@ exec_always {
   gsettings set org.gnome.desktop.interface font-name "DejaVu Sans 10"
   gsettings set org.gnome.desktop.interface font-antialiasing "rgba"
   gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
-  #gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+  gsettings set gtk-application-prefer-dark-theme "true"
 }
 
 #
 # Autostart apps
 #
-
 exec mako
 exec gammastep
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec playerctld daemon
 exec wl-paste -t text --watch clipman store --no-persist
 exec_always "pkill kanshi; exec kanshi"
+exec_always xrdb .Xresources
 
 # Additional config
 include /etc/sway/config.d/*
