@@ -155,8 +155,8 @@ bindsym XF86AudioMute $exec amixer -q set Master toggle
 bindsym XF86AudioMicMute $exec amixer -q set Capture toggle
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp $exec "light -A 5; dunstify  -r 1 'Brightness up' $(printf %.0f%% $(light -G))"
-bindsym XF86MonBrightnessDown $exec "light -U 5; dunstify -r 1 'Brightness down' $(printf %.0f%% $(light -G))"
+bindsym XF86MonBrightnessUp $exec ~/bin/brightness.sh up 
+bindsym XF86MonBrightnessDown $exec ~/bin/brightness.sh down
 
 # Print Screen
 bindsym Print $exec flameshot gui
@@ -236,6 +236,7 @@ for_window [class="Lxappearance"] floating enable
 for_window [class="Alacritty" title="ncmpcpp"] floating enable sticky enable
 
 exec_always --no-startup-id nitrogen --restore
+exec_always --no-startup-id killall dunst; dunst
 
 bar {
   position bottom
