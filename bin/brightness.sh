@@ -9,7 +9,7 @@ notify() {
     local current_level="$(light -G)"
     local icon='display-brightness'
     notify-send -c 'osd' -i $icon -h string:x-dunst-stack-tag:light -h int:value:$current_level $(printf %.0f%% $current_level)
-    paplay /usr/share/sounds/freedesktop/stereo/message.oga
+    #paplay /usr/share/sounds/freedesktop/stereo/message.oga
 }
 
 case "$1" in

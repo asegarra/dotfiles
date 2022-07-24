@@ -2,7 +2,7 @@
 name = "native"
 
 [theme.overrides]
-idle_fg = "#abb2bf"
+idle_fg = "#d8d8d8"
 info_fg = "#11a8cd"
 good_fg = "#a1b56c"
 warning_fg = "#f7ca88"
@@ -41,7 +41,7 @@ block = "pacman"
 interval = 3600
 format = "{both}"
 critical_updates_regex = "(linux|linux-lts)"
-aur_command = "paru -Qua"
+aur_command = "yay -Qua"
 
 [[block]]
 block = "disk_space"
@@ -78,7 +78,6 @@ interval = 10
 chip = "coretemp-isa-*"
 format = "{average}"
 collapsed = false
-icons_format = " T"
 
 [[block]]
 block = "sound"
@@ -88,10 +87,10 @@ on_click = "pavucontrol"
 block = "battery"
 driver = "upower"
 
-[[block]]
-block = "keyboard_layout"
-driver = "sway"
-format = "{variant}"
+#[[block]]
+#block = "keyboard_layout"
+#driver = "sway"
+#format = "{variant}"
 
 [[block]]
 block = "time"
