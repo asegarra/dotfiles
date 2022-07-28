@@ -17,13 +17,3 @@ source /usr/share/doc/pkgfile/command-not-found.zsh
 eval "$(starship init zsh)"
 
 . $HOME/.asdf/asdf.sh
-
-# Set current directory as terminal title
-[[ ${TERM} != dumb ]] && () {
-  local termtitle_format
-  autoload -Uz add-zsh-hook
-  termtitle_format='%~'
-  builtin eval "termtitle_update_${zhook}() { print -Pn '\E]0;'${(qq)termtitle_format}'\a' }"
-  add-zsh-hook precmd ${zhook} termtitle_update_${zhook}
-}
-

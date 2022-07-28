@@ -171,7 +171,7 @@ bindsym Mod1+Tab $exec rofi -show window
 bindsym $mod+shift+f $exec thunar
 
 # Browser
-bindsym $mod+shift+b $exec brave-browser 
+bindsym $mod+shift+b $exec google-chrome-stable
 
 bindsym $mod+shift+m $exec alacritty -e ncmpcpp
 
@@ -237,6 +237,7 @@ for_window [class="Dconf-editor"] floating enable
 for_window [class="Pavucontrol"] floating enable border normal
 for_window [class="Blueman"] floating enable border normal
 for_window [title="nmtui"] floating enable
+for_window [title="htop"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="Alacritty" title="ncmpcpp"] floating enable sticky enable
 
