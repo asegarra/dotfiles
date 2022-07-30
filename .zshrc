@@ -16,4 +16,4 @@ source /usr/share/doc/pkgfile/command-not-found.zsh
 
 eval "$(starship init zsh)"
 
-. $HOME/.asdf/asdf.sh
+source $HOME/.asdf/asdf.sh
