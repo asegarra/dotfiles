@@ -87,11 +87,6 @@ on_click = "pavucontrol"
 block = "battery"
 driver = "upower"
 
-#[[block]]
-#block = "keyboard_layout"
-#driver = "sway"
-#format = "{variant}"
-
 [[block]]
 block = "time"
 interval = 5

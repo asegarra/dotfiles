@@ -1,3 +1,7 @@
+output eDP-1
+off
+output HDMI-1
+off
 output DP-1
 off
 output HDMI-2
@@ -10,12 +14,18 @@ output DP-3
 off
 output DP-4
 off
-output eDP-1
+output DP-3-1
 off
-output HDMI-1
+output DP-3-2
+off
+output DP-3-3
 crtc 0
-gamma 1.0:0.909:0.909
+gamma 1.0:0.769:0.556
 mode 3840x2160
 pos 0x0
 primary
 rate 60.00
+x-prop-audio auto
+x-prop-broadcast_rgb Automatic
+x-prop-max_bpc 12
+x-prop-non_desktop 0
