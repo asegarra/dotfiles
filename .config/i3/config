@@ -141,7 +141,7 @@ bindsym $mod+shift+parenleft move container to workspace number $ws4
 bindsym $mod+shift+ampersand move container to workspace number $ws5
 bindsym $mod+shift+equal move container to workspace number $ws6
 bindsym $mod+shift+parenright move container to workspace number $ws7
-bindsym $mod+shift+bracerigth move container to workspace number $ws8
+
 bindsym $mod+shift+bracketright move container to workspace number $ws9
 
 # move workspace to another screen if it exists
