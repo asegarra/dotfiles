@@ -1,18 +1,18 @@
-font=MesloLGS NF 9
+font=MesloLGS NF 10
 default-timeout=5000
 height=300
 width=350
 icon-path=/usr/share/icons/Papirus
 
 [urgency="low"]
-background-color=#222222
-text-color=#888888
-border-color=#aaaaaa
+background-color=#282c34
+text-color=#abb2bf
+border-color=#545862
 
 [urgency="normal"]
-background-color=#285577
-text-color=#ffffff
-border-color=#aaaaaa
+background-color=#282c34
+text-color=#61afef
+border-color=#545862
 
 [urgency="critical"]
 background-color=#900000

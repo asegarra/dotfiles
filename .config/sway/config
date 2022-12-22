@@ -3,15 +3,16 @@
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
-set $mod Mod1
+set $mod Mod4
 
-set $meta Mod4
+set $meta Mod1
 
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
+
 # Your preferred terminal emulator
 set $term alacritty
 
@@ -20,11 +21,10 @@ set $grimshot "/usr/share/sway/scripts/grimshot"
 set $font MesloLGS NF
 
 # Application launcher
-set $menu fuzzel -D "no" -i "Papirus-Dark" -w 40 -f "$font:size=14" -b "282c34ff" -t "abb2bfff" -C "abb2bfff" -s "545862ff" -S "61afefff" -T "$term" -p 5
+set $menu fuzzel
 
 font pango:$font 9
-titlebar_padding 2 1 
-default_border pixel 2
+default_border pixel 1
 smart_borders no_gaps
 focus_follows_mouse no
 
@@ -54,9 +54,7 @@ bindswitch --locked lid:on output eDP-1 disable
 bindswitch --locked lid:off output eDP-1 enable
 
 ### Input configuration
-input "type:keyboard" {
-  xkb_layout us,real-prog-dvorak
-  # xkb_variant colemak,
+input "1:1:AT_Translated_Set_2_keyboard" {
   xkb_options caps:swapescape,grp:alt_space_toggle
 }
 
@@ -67,7 +65,7 @@ input "type:touchpad" {
 }
 
 input "type:pointer" {
-  scroll_factor 4.0
+  scroll_factor 3.0
 }
 
 #
@@ -95,12 +93,6 @@ bindsym $mod+shift+f exec thunar
 
 # Music
 bindsym $mod+shift+m exec $term -t ncmpcpp -e ncmpcpp
-
-# Scripts
-bindsym $meta+tab exec ~/.config/sway/scripts/sway-window-switcher
-bindsym $mod+shift+r exec ~/.config/sway/scripts/sway-rename
-bindsym $mod+n exec ~/.config/sway/scripts/sway-new-workspace
-# bindsym $mod+shift+m exec ~/.config/sway/scripts/sway-mark-switcher
 
 # clipboard
 bindsym $mod+insert exec clipman pick --notify -t CUSTOM -T '$menu -d'
@@ -160,19 +152,6 @@ bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
 
-# Custom Programmer Dvorak
-#bindsym $mod+plus workspace 1
-#bindsym $mod+bracketleft workspace 2
-#bindsym $mod+braceleft workspace 3
-#bindsym $mod+parenleft workspace 4
-#bindsym $mod+ampersand workspace 5
-#bindsym $mod+equal workspace 6
-#bindsym $mod+parenright workspace 7
-#bindsym $mod+braceright workspace 8
-#bindsym $mod+bracketright workspace 9
-#bindsym $mod+asterisk workspace 10
-
-
 # Move focused container to workspace
 # Note: workspaces can have any name you want, not just numbers.
 # We just use 1-10 as the default.
@@ -186,18 +165,6 @@ bindsym $mod+shift+7 move container to workspace number 7
 bindsym $mod+shift+8 move container to workspace number 8
 bindsym $mod+shift+9 move container to workspace number 9
 bindsym $mod+shift+0 move container to workspace number 10
-
-# Custom Programmer Dvorak
-#bindsym $mod+shift+plus move container to workspace number 1
-#bindsym $mod+shift+bracketleft move container to workspace number 2
-#bindsym $mod+shift+braceleft move container to workspace number 3
-#bindsym $mod+shift+parenleft move container to workspace number 4
-#bindsym $mod+shift+ampersand move container to workspace number 5
-#bindsym $mod+shift+equal move container to workspace number 6
-#bindsym $mod+shift+parenright move container to workspace number 7
-#bindsym $mod+shift+braceright move container to workspace number 8
-#bindsym $mod+shift+bracketright move container to workspace number 9
-#bindsym $mod+shift+asterisk move container to workspace number 10
 
 # Navigate workspaces next / previous
 bindsym $mod+prior workspace prev
@@ -258,15 +225,16 @@ bindsym $mod+minus scratchpad show
 # Special keys
 #
 # Audio
-bindsym --locked XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
-bindsym --locked XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
-bindsym --locked XF86AudioMute exec amixer -q set Master toggle
+bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+
 bindsym --locked $mod+F10 exec playerctl previous
 bindsym --locked $mod+F11 exec playerctl play-pause
 bindsym --locked $mod+F12 exec playerctl next
 
 # Mic
-bindsym --locked XF86AudioMicMute exec amixer -q set Capture toggle
+bindsym --locked XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 
 # Backlight
 bindsym --locked XF86MonBrightnessDown exec ~/bin/brightness.sh down 
@@ -338,25 +306,42 @@ mode "$mode_screenshot" {
 }
 bindsym print mode "$mode_screenshot"
 
+include colorscheme
+
+# Property Name         Border  BG      Text    Indicator Child Border
+client.focused          $base0D $base00 $base0D $base0D $base0D
+client.focused_inactive $base01 $base01 $base05 $base03 $base01
+client.unfocused        $base01 $base00 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
+client.placeholder      $base00 $base00 $base05 $base00 $base00
+client.background       $base07
+
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
+  font pango:$font 9
   status_command i3status-rs 
-  tray_output *
-  icon_theme "Papirus-Dark"
+  colors {
+    separator_symbol "/"
+
+    background $base00
+    separator  $base05
+    statusline $base04
+
+    # State             Border  BG      Text
+    focused_workspace   $base0D $base00 $base0D
+    active_workspace    $base05 $base03 $base00
+    inactive_workspace  $base03 $base01 $base05
+    urgent_workspace    $base08 $base08 $base00
+    binding_mode        $base00 $base0A $base00
+  }
 }
 
 # App rules
 for_window [app_id="firefox" title="About Mozilla Firefox"] floating enable
 for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable; sticky enable
-for_window [app_id="dconf-editor"] floating enable 
-for_window [app_id="pavucontrol"] floating enable
-for_window [app_id="blueman"] floating enable
-for_window [app_id="Alacritty" title="ncmpcpp"] floating enable
-for_window [app_id="Alacritty" title="htop"] floating enable
-for_window [app_id="Alacritty" title="nmtui"] floating enable
 for_window [title="fzf-switcher"] floating enable
 
 # Change title of xwayland apps
@@ -365,10 +350,10 @@ for_window [shell="xdg_shell"] title_format "%title"
 
 # Gtk settings
 exec_always {
-  gsettings set org.gnome.desktop.interface font-name "DejaVu Sans 10"
+  gsettings set org.gnome.desktop.interface font-name "Ubuntu 11"
   gsettings set org.gnome.desktop.interface font-antialiasing "rgba"
-  gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
-  gsettings set gtk-application-prefer-dark-theme "true"
+  gsettings set org.gnome.desktop.interface icon-theme "Papirus"
+  #gsettings set gtk-application-prefer-dark-theme "true"
 }
 
 #
@@ -380,7 +365,7 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec playerctld daemon
 exec wl-paste -t text --watch clipman store --no-persist
 exec_always "pkill kanshi; exec kanshi"
-exec_always xrdb .Xresources
+#exec_always xrdb .Xresources
 
 # Additional config
 include /etc/sway/config.d/*

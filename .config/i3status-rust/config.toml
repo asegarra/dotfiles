@@ -1,12 +1,16 @@
 [theme]
 name = "native"
-
 [theme.overrides]
-idle_fg = "#d8d8d8"
-info_fg = "#11a8cd"
-good_fg = "#a1b56c"
-warning_fg = "#f7ca88"
-critical_fg = "#ab4642"
+idle_bg = "#282c34"
+idle_fg = "#abb2bf"
+info_fg = "#56b6c2"
+info_bg = "#282c34"
+good_fg = "#98c379"
+good_bg = "#282c34"
+warning_fg = "#e5c07b"
+warning_bg = "#282c34"
+critical_fg = "#e06c75"
+critical_bg = "#282c34"
 
 [icons]
 name = "none"
@@ -27,21 +31,10 @@ pomodoro_stopped = "\uf04d" # nf-fa-stop
 
 [[block]]
 block = "music"
-buttons = ["prev", "play", "next"]
+#buttons = ["prev", "play", "next"]
 dynamic_width = true
 hide_when_empty = true
-max_width = 30
-
-[[block]]
-block = "pomodoro"
-notifier = "i3nag"
-
-[[block]]
-block = "pacman"
-interval = 3600
-format = "{both}"
-critical_updates_regex = "(linux|linux-lts)"
-aur_command = "yay -Qua"
+max_width = 40
 
 [[block]]
 block = "disk_space"
@@ -54,11 +47,9 @@ warning = 20.0
 alert = 10.0
 
 [[block]]
-block = "net"
-format = "{speed_up;K*b}{speed_down;K*b}"
+block = "networkmanager"
+device_format = "{typename}"
 on_click = "alacritty -t 'nmtui' -e nmtui"
-interval = 5
-hide_inactive = true
 
 [[block]]
 block = "memory"
@@ -85,7 +76,9 @@ on_click = "pavucontrol"
 
 [[block]]
 block = "battery"
+full_format = "{percentage}"
 driver = "upower"
+hide_missing = true
 
 [[block]]
 block = "time"
