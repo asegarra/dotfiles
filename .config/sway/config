@@ -225,7 +225,7 @@ bindsym $mod+minus scratchpad show
 # Special keys
 #
 # Audio
-bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ --limit 1.0
 bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
@@ -289,7 +289,7 @@ mode "$mode_noti" {
   bindsym r exec makoctl restore
   bindsym escape mode "default"
 }
-bindsym $mod+shift+n mode "$mode_noti"
+bindsym $mod+ mode "$mode_noti"
 
 set $mode_screenshot  (s) screen, (a) area, (w) window (Shift for )
 mode "$mode_screenshot" {
@@ -352,7 +352,7 @@ for_window [shell="xdg_shell"] title_format "%title"
 exec_always {
   gsettings set org.gnome.desktop.interface font-name "Ubuntu 11"
   gsettings set org.gnome.desktop.interface font-antialiasing "rgba"
-  gsettings set org.gnome.desktop.interface icon-theme "Papirus"
+  gsettings set org.gnome.desktop.interface icon-theme "Papirus-Light"
   #gsettings set gtk-application-prefer-dark-theme "true"
 }
 

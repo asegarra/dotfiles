@@ -3,6 +3,7 @@ default-timeout=5000
 height=300
 width=350
 icon-path=/usr/share/icons/Papirus
+progress-color=over #61afef
 
 [urgency="low"]
 background-color=#282c34
@@ -23,3 +24,4 @@ default-timeout=0
 [category=osd]
 anchor=center
 default-timeout=2000
+text-color=#ffffff

@@ -3,5 +3,5 @@ gtk-xft-antialias=1
 gtk-xft-hinting=1
 gtk-xft-hintstyle="hintslight"
 gtk-xft-rgba="rgb"
-gtk-icon-theme-name="Papirus"
+gtk-icon-theme-name="Papirus-Light"
 #gtk-theme-name="Arc-Dark-solid"
