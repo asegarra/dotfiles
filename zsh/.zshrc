@@ -67,10 +67,6 @@ alias lat="ls --color -la --sort=time"
 
 alias rh="fc -R"
 
-alias lg="lazygit"
-alias v="vim"
-alias batcat="bat"
-
 autoload run-help
 
 # zsh parameters
@@ -202,13 +198,20 @@ _comp_options=("${(@)_comp_options:#NO_ignoreclosebraces}")
 
 [[ -e ~/.shfuncs ]] && source ~/.shfuncs
 
+
+alias lg="lazygit"
+alias v="vim"
+alias bat="batcat"
+
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 eval "$(fnm env --use-on-cd --shell zsh)"
 
-source "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+source "/usr/share/doc/fzf/examples/completion.zsh"
+source "/usr/share/doc/fzf/examples/key-bindings.zsh"
 
 setopt notify
 
