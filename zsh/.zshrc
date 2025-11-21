@@ -207,11 +207,11 @@ eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 eval "$(fnm env --use-on-cd --shell zsh)"
 
-source "/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-source "/usr/share/doc/fzf/examples/completion.zsh"
-source "/usr/share/doc/fzf/examples/key-bindings.zsh"
+source /usr/share/doc/fzf/examples/completion.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 setopt notify
 
